@@ -8,26 +8,9 @@ import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 
-/**
- * This class contains the attributes for the main layout of
- * our application.
- */
 
-/**
- * The constructor for ViewForDrawing
- * This constructor calls the setupDrawing()
- * method. This constructor is called only
- * once when the application layout is first
- * created upon launch.
- *
- * @param context
- * @param attrs
- */
+ // This class contains the attributes for the main layout of the application.
 
-/**
- * The reference link to create this class is
- * https://medium.com/@ssaurel/learn-to-create-a-paint-application-for-android-5b16968063f8
- */
 @SuppressLint("NewApi")
 class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
@@ -45,14 +28,6 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     // A variable to hold a color of the stroke.
     private var color = Color.BLACK
 
-    /**
-     * A variable for canvas which will be initialized later and used.
-     *
-     *The Canvas class holds the "draw" calls. To draw something, you need 4 basic components: A Bitmap to hold the pixels, a Canvas to host
-     * the draw calls (writing into the bitmap), a drawing primitive (e.g. Rect,
-     * Path, text, Bitmap), and a paint (to describe the colors and styles for the
-     * drawing)
-     */
     private var canvas: Canvas? = null
 
     private val mPaths = ArrayList<CustomPath>() // ArrayList for Paths
@@ -99,14 +74,6 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         /**
          * Draw the specified bitmap, with its top/left corner at (x,y), using the specified paint,
          * transformed by the current matrix.
-         *
-         *If the bitmap and canvas have different densities, this function will take care of
-         * automatically scaling the bitmap to draw at the same density as the canvas.
-         *
-         * @param bitmap The bitmap to be drawn
-         * @param left The position of the left side of the bitmap being drawn
-         * @param top The position of the top side of the bitmap being drawn
-         * @param paint The paint used to draw the bitmap (may be null)
          */
         canvas.drawBitmap(mCanvasBitmap!!, 0f, 0f, mCanvasPaint)
 
@@ -176,23 +143,14 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context, attrs) 
         mDrawPaint!!.strokeWidth = mBrushSize
     }
 
-    /**
-     * This function is called when the user desires a color change.
-     * This functions sets the color of a store to selected color and able to draw on view using that color.
-     *
-     * @param newColor
-     */
+
     fun setColor(newColor: String) {
         color = Color.parseColor(newColor)
         mDrawPaint!!.color = color
     }
 
-    /**
-     * This function is called when the user selects the undo
-     * command from the application. This function removes the
-     * last stroke input by the user depending on the
-     * number of times undo has been activated.
-     */
+
+
     fun onClickUndo() {
         if (mPaths.size > 0) {
 
